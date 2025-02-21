@@ -1,6 +1,11 @@
 package visual;
 
 import javax.swing.*;
+
+import controlador.MouseControlador;
+import modelo.Girassol;
+import modelo.Planta;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,12 +14,18 @@ import java.util.Set;
 
 public class BarraSelect extends JPanel {
     private JPanel areaSol, areaPlantas, areaPa;
-    private int alturaBarra = 85;
+    private int alturaBarra = 85; //fixo
+    private int celulaSize;
     private Set<Integer> plantasSelecionadas = new HashSet<>(); //Plantas unicas
     private JPanel slotPlantaSelect = null; //slot da planta selecionada
     private int plantaSelectTipo = -1; 
 
-    public BarraSelect() {
+    private MouseControlador mouseControlador;
+
+    public BarraSelect(int celulaSize, MouseControlador controlador) {
+        this.celulaSize = celulaSize;
+        this.mouseControlador = controlador;
+
     	//AREA GERAL DA BARRA
         setPreferredSize(new Dimension(100, alturaBarra));
         setBackground(new Color(139, 69, 19));
@@ -54,7 +65,7 @@ public class BarraSelect extends JPanel {
         areaPa.setBackground(Color.LIGHT_GRAY);
         gbc.gridx = 2; gbc.weightx = 0.2;
         add(areaPa, gbc);
-        
+
     } //------------------------------FIM DO BARRA SELECT
 
     //ADD PLANTAS NA SEMENTEIRA (COM SEUS IDS)
@@ -87,26 +98,28 @@ public class BarraSelect extends JPanel {
         case 6: nomePlanta = "Gelo"; pathImage = "/visual/assets/Plantas/Gelo.png"; break;
         default: nomePlanta = "Desconhecida";
         }
-
-        int celulaSize = 60;
+        
+        int tamPlanta = celulaSize/2; //de 120 para 60
+        
         //ADD A IMAGEM DE CADA PLANTA
         ImageIcon imgPlantaOriginal = new ImageIcon(getClass().getResource(pathImage));
-        Image imgPlantaSlot = imgPlantaOriginal.getImage().getScaledInstance(celulaSize, celulaSize, Image.SCALE_SMOOTH); 
+        Image imgPlantaSlot = imgPlantaOriginal.getImage().getScaledInstance(tamPlanta, tamPlanta, Image.SCALE_SMOOTH); 
         JLabel imgLabel = new JLabel(new ImageIcon(imgPlantaSlot));
         imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
         slot.add(imgLabel, BorderLayout.CENTER);
+
+        //
         
         //----------SELECIONAR PLANTA----------
         slot.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                selecionarPlanta(tipo, slot);
+                mouseControlador.selecionarPlanta(tipo);
             }
         });
         
         return slot;
     }//FIM DO CRIAR SLOT PLANTA
-
 
     private void atualizarSlots() {
         Component[] slots = areaPlantas.getComponents(); //retornar tds os componentes de areaPlantas

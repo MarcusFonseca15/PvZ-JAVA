@@ -4,13 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.JFrame;
 import modelo.Campo;
 import visual.assets.grama.*;
 import visual.PvZGame;
+import visual.BarraSelect;
+import controlador.MouseControlador;
+
 
 public class FramePvZ extends JFrame{
 	
+
 	//GRAMA
     int[][] grama = new int[10][5];
     Image gramaNormal, gramaMouseOver;
@@ -25,6 +28,8 @@ public class FramePvZ extends JFrame{
     private JPanel gramaPanel;
     private PvZGame jogoPanel;
     private BarraSelect barraSelect;
+    private MouseControlador mouseControlador;
+    
 
     public FramePvZ(Campo campo) {
         setTitle("Plants vs Zombies");
@@ -41,8 +46,10 @@ public class FramePvZ extends JFrame{
         gramaMouseOver = new ImageIcon("src/visual/assets/grama/gramaMouseOver.png").getImage();
         
         //BARRA DE SELEÇÃO
-        barraSelect = new BarraSelect();
+        MouseControlador mouseControlador = new MouseControlador(jogoPanel); //porque o BarraSelect pede
+        barraSelect = new BarraSelect(celulaSize, mouseControlador);
         add(barraSelect, BorderLayout.NORTH);
+        
         
         //INICIALIZAR A MATRIZ DA GRAMA
         for (int i = 0; i < grama.length; i++) {

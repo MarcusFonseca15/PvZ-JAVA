@@ -3,12 +3,14 @@ package visual;
 import modelo.Campo;
 import javax.swing.*;
 import java.awt.*;
+import visual.BarraSelect;
 
 public class PvZGame extends JPanel {
 	//DESENHAR AS MATRIZES DE PLANTAS, ZUMBIS, PROJETEIS
 	
     private Campo campo;           //Referenciar o estado atual do jogo
     private int celulaSize;
+    private BarraSelect barraSelect;
     
     //IMAGENS
     private Image cortadorImg; //1
@@ -28,7 +30,10 @@ public class PvZGame extends JPanel {
         this.campo = campo;
         this.celulaSize = celulaSize;
         
+        //INICIALIZAR CORTADOR
         cortadorImg = new ImageIcon("src/visual/assets/Cortador/Cortador.png").getImage();
+
+        //INICIALIZAR CAMPO
         setPreferredSize(new Dimension(
             campo.getMatPla()[0].length * celulaSize + 15,
             campo.getMatPla().length * celulaSize + 35
