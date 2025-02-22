@@ -1,0 +1,4 @@
+NECESSARIO CRIAR METODOS:
+1. IsGrama para confirmar se tal area clicada é grama, e passar o indice (ele diz x e y, mas substituimos) da matriz grama
+
+2. plantar( ), para adicionar o tipo do carrying na matriz
