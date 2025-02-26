@@ -16,15 +16,17 @@ public class BarraSelect extends JPanel {
     private JPanel areaSol, areaPlantas, areaPa;
     private int alturaBarra = 85; //fixo
     private int celulaSize;
+
     private Set<Integer> plantasSelecionadas = new HashSet<>(); //Plantas unicas
-    private JPanel slotPlantaSelect = null; //slot da planta selecionada
+
+    private JPanel slotPlantaSelect = null;
     private int plantaSelectTipo = -1; 
 
     private MouseControlador mouseControlador;
 
-    public BarraSelect(int celulaSize, MouseControlador controlador) {
+    public BarraSelect(int celulaSize /*, MouseControlador controlador*/) {
         this.celulaSize = celulaSize;
-        this.mouseControlador = controlador;
+        //this.mouseControlador = controlador;
 
     	//AREA GERAL DA BARRA
         setPreferredSize(new Dimension(100, alturaBarra));
@@ -39,7 +41,7 @@ public class BarraSelect extends JPanel {
 
         //AREA DO SOL (20%)
         areaSol = new JPanel();
-        areaSol.setBackground(Color.YELLOW); // Apenas cor de placeholder
+        areaSol.setBackground(Color.YELLOW);
         gbc.gridx = 0; gbc.weightx = 0.2;
         add(areaSol, gbc);
 
@@ -54,6 +56,7 @@ public class BarraSelect extends JPanel {
         addPlantaBarra(4);
         addPlantaBarra(5);
         addPlantaBarra(6);
+        addPlantaBarra(7);
         
         /* (int i = 1; i < 5; i++) {
             JPanel slot = criarSlotPlanta(i + 1);

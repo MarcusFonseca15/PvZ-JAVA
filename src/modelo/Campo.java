@@ -10,7 +10,6 @@ public class Campo {
 	private int[][] grama = new int[5][10];
     private int[][] matPla = new int[5][10];  //Matriz de plantas
     private int[][] matZo = new int[5][10];   //Matriz de zumbis
-    private int[][] matProj = new int[5][10]; //Matriz de projéteis
     
 public Campo() {
         iniciarCortadores();
@@ -22,25 +21,25 @@ private void iniciarCortadores() {
         }
     }//fim initCortadores
 
-//ADIÇÃO E REMOÇÃO DE ELEMENTOS NA MATRIZ
-public void addPlanta(int linha, int coluna) {
-    matPla[linha][coluna] = 1;
-}
+// //ADIÇÃO E REMOÇÃO DE ELEMENTOS NA MATRIZ ?????? inspirar na logica do kill zumbi
+// public void addPlanta(int linha, int coluna) {
+//     matPla[linha][coluna] = 1;
+// }
 
-public void removePlanta(int linha, int coluna) {
-    matPla[linha][coluna] = 0;
-}
+// public void removePlanta(int linha, int coluna) {
+//     matPla[linha][coluna] = 0;
+// }
 
-public void addZumbi(int linha, int coluna) {
-    matZo[linha][coluna] = 1;
-}
+// public void addZumbi(int linha, int coluna) {
+//     matZo[linha][coluna] = 1;
+// }
 
-public void killZumbi(int linha, int coluna) {
-    matZo[linha][coluna] = 0;
-}
+// public void killZumbi(int linha, int coluna) {
+//     matZo[linha][coluna] = 0;
+// }
 
 
-//VALIDAÇÕES DE ESTADO
+//MÉTODOS VALIDAÇÕES DE ESTADO
 public boolean temPlanta(int linha, int coluna) {
     return matPla[linha][coluna] == 1;
 }

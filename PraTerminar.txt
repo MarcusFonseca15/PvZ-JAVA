@@ -1,4 +1,44 @@
+NO BARRASELECT:
+-Alterar PlantaSelecionada (HashSet) para int
+
 NECESSARIO CRIAR METODOS:
 1. IsGrama para confirmar se tal area clicada é grama, e passar o indice (ele diz x e y, mas substituimos) da matriz grama
 
 2. plantar( ), para adicionar o tipo do carrying na matriz
+
+
+ADICIONAR COOLDOWN NO OBJETO 'PLANTA'
+
+
+DENTRO DE CADA PLANTA:
+-Criar a imagem
+-Criar a lógica:
+    1.Ervilha: if Zumbi na mesma linha, atira
+    2. Girassol: A cada random 5-10 segs gerar um sol
+    3. Carnívora: if Zumbi matZa(Da planta)+1 -> EAT (cooldown ativa)
+-Identificar se houve click nela (e se sim, se foi com a pá, pra ela se deletar)
+
+EM PVZGame
+- Interação entre elementos
+- Inicializa o Slot de acordo com o que foi selecionado
+- Identificar colisão entre projétil e Zumbi
+    1: Identifica a todo momento se algum projétil intersects(zumbi){...} [[[[[ATENÇÃO LINHA 37]]]]]
+    2: Se sim, estoura projétil (some) e VidaZumbi abaixa
+    3: Repaint()
+-ADICIONAR NO CONSTRUTOR TODOS ESSES LISTENERS
+
+EM PVZFrame
+- Dentro do construdor:
+    1. Criar booleano GameOver = false no inicio
+    2. Chamar o PvZGame para interação de tudo
+    3. if Zumbi passar da 1° coluna, GameOver = true
+    4. Todos objetos paralisam
+    5. Surge Dialog de tela de GameOver
+
+[?]UTilização de paint(Graphics g) para fazer a Tela de GameOver (if (gameOver) { parar tudo, abrir tela })
+
+[Sobre o intersects() ]: Recebe uma variavel do tipo Retangle. Necessário fazer
+                        Planta e Zumbi extends de Retangle ou uma Label, e preencher com suas imagens
+
+EM BARRA SELECT
+- Fazer um MouseOver (igual do FramePVZ)

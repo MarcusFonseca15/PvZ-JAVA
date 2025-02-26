@@ -46,8 +46,8 @@ public class FramePvZ extends JFrame{
         gramaMouseOver = new ImageIcon("src/visual/assets/grama/gramaMouseOver.png").getImage();
         
         //BARRA DE SELEÇÃO
-        MouseControlador mouseControlador = new MouseControlador(jogoPanel); //porque o BarraSelect pede
-        barraSelect = new BarraSelect(celulaSize, mouseControlador);
+        //MouseControlador mouseControlador = new MouseControlador(jogoPanel); //porque o BarraSelect pede
+        barraSelect = new BarraSelect(celulaSize /*, mouseControlador*/);
         add(barraSelect, BorderLayout.NORTH);
         
         
@@ -97,8 +97,8 @@ public class FramePvZ extends JFrame{
         //JLayeredPane ORGANIZAR AS CAMADAS
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(
-            grama.length * celulaSize,    // Largura correta
-            grama[0].length * celulaSize  // Altura correta
+            grama.length * celulaSize,    //Largura
+            grama[0].length * celulaSize  //Altura
         ));
         
         gramaPanel.setBounds(0, 0, grama.length * celulaSize, grama[0].length * celulaSize);

@@ -14,6 +14,7 @@ public class PvZGame extends JPanel {
     
     //IMAGENS
     private Image cortadorImg; //1
+    private Image girassolImg; //2
     
     /*
     0: Vazio;
@@ -26,18 +27,19 @@ public class PvZGame extends JPanel {
     7: Planta Carnívora.
 */
     public PvZGame(Campo campo, int celulaSize) {
-    	//RECEBER O VALOR (Construtor?)
+    	//RECEBER O VALOR (Construtor)
         this.campo = campo;
         this.celulaSize = celulaSize;
-        
-        //INICIALIZAR CORTADOR
-        cortadorImg = new ImageIcon("src/visual/assets/Cortador/Cortador.png").getImage();
 
         //INICIALIZAR CAMPO
         setPreferredSize(new Dimension(
             campo.getMatPla()[0].length * celulaSize + 15,
             campo.getMatPla().length * celulaSize + 35
         ));
+
+        //PATH DO CORTADOR
+        cortadorImg = new ImageIcon("src/visual/assets/Cortador/Cortador.png").getImage();
+        girassolImg = new ImageIcon("src/visual/assets/Plantas/Girassol.png").getImage();
     }
 
     @Override
@@ -56,12 +58,12 @@ public class PvZGame extends JPanel {
                     g.drawImage(cortadorImg, j * celulaSize, i * celulaSize, celulaSize, celulaSize, null);
                 }
                 //GIRASSOL
-               /* if (matPla[i][j] == 2) {
+                if (matPla[i][j] == 2) {
                 	g.drawImage(girassolImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
-                }*/
+                }
             }
         }
     }
-    
+    //repaint();
     
 }
