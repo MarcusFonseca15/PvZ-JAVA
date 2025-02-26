@@ -7,26 +7,24 @@ import modelo.Girassol;
 import modelo.Planta;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.HashSet;
-import java.util.Set;
+import java.awt.event.*;
+import java.util.*;
+import java.util.List;
 
 public class BarraSelect extends JPanel {
     private JPanel areaSol, areaPlantas, areaPa;
     private int alturaBarra = 85; //fixo
     private int celulaSize;
 
-    private Set<Integer> plantasSelecionadas = new HashSet<>(); //Plantas unicas
-
-    private JPanel slotPlantaSelect = null;
+    private List<Integer> listaPlantas = new ArrayList<>(); //lista ordenada de plantas
+    private JPanel slotPlanta = null;
     private int plantaSelectTipo = -1; 
 
     private MouseControlador mouseControlador;
 
-    public BarraSelect(int celulaSize /*, MouseControlador controlador*/) {
+    public BarraSelect(int celulaSize, MouseControlador controlador) {
         this.celulaSize = celulaSize;
-        //this.mouseControlador = controlador;
+        this.mouseControlador = controlador;
 
     	//AREA GERAL DA BARRA
         setPreferredSize(new Dimension(100, alturaBarra));
@@ -58,7 +56,8 @@ public class BarraSelect extends JPanel {
         addPlantaBarra(6);
         addPlantaBarra(7);
         
-        /* (int i = 1; i < 5; i++) {
+        /* PASSA ATUALIZAÇAO FUTURA PELA QNT SELECIONADA SER LIVRE
+         (int i = 1; i < 5; i++) {
             JPanel slot = criarSlotPlanta(i + 1);
             areaPlantas.add(slot);
         }*/
@@ -73,8 +72,8 @@ public class BarraSelect extends JPanel {
 
     //ADD PLANTAS NA SEMENTEIRA (COM SEUS IDS)
     private void addPlantaBarra(int tipo) {
-    	if (plantasSelecionadas.contains(tipo)) return; //Evita repetição
-    	plantasSelecionadas.add(tipo);
+    	if (listaPlantas.contains(tipo)) return; //Evita repetição de mim mesmo rs
+    	listaPlantas.add(tipo);
     	JPanel slot = criarSlotPlanta(tipo);
     	areaPlantas.add(slot);
     	revalidate();
@@ -102,7 +101,7 @@ public class BarraSelect extends JPanel {
         default: nomePlanta = "Desconhecida";
         }
         
-        int tamPlanta = celulaSize/2; //de 120 para 60
+        int tamPlanta = celulaSize/2; //de 120 para 60(sempre a metade)
         
         //ADD A IMAGEM DE CADA PLANTA
         ImageIcon imgPlantaOriginal = new ImageIcon(getClass().getResource(pathImage));
@@ -110,53 +109,35 @@ public class BarraSelect extends JPanel {
         JLabel imgLabel = new JLabel(new ImageIcon(imgPlantaSlot));
         imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
         slot.add(imgLabel, BorderLayout.CENTER);
-
-        //
         
         //----------SELECIONAR PLANTA----------
         slot.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                mouseControlador.selecionarPlanta(tipo);
+                selecionarPlanta(tipo, slot);
             }
         });
         
         return slot;
     }//FIM DO CRIAR SLOT PLANTA
-
-    private void atualizarSlots() {
-        Component[] slots = areaPlantas.getComponents(); //retornar tds os componentes de areaPlantas
-        int index = 0;									//tem 5 slots, retorna 5 JPanels
-        
-        //Selecionar Planta
-        for (int planta : plantasSelecionadas) {
-            JPanel slot = (JPanel) slots[index++];
-            slot.setBackground(Color.BLUE);
-            //usar a variavel 'planta'
-        }
-    }
     
     public void selecionarPlanta(int tipo, JPanel slot) {
-    	if (slotPlantaSelect == slot) {
-            // CLICOU NA MESMA PLANTA = DESELECIONA
-            slotPlantaSelect.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            slotPlantaSelect = null;
+        // CLICOU NA MESMA PLANTA = DESELECIONA
+    	if (slotPlanta == slot) {
+            slotPlanta.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            slotPlanta = null;
             plantaSelectTipo = -1;
+            mouseControlador.selecionarPlanta(-1); //deselecona
         } else {
             // CLICOU EM OUTRA PLANTA = SELECIONA NOVA
-            if (slotPlantaSelect != null)
-                slotPlantaSelect.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            if (slotPlanta != null)
+                slotPlanta.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-            slotPlantaSelect = slot;
+            slotPlanta = slot;
             plantaSelectTipo = tipo;
+            mouseControlador.selecionarPlanta(tipo);
             slot.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
         }
     }
-    
-    //GETTER PRA PEGAR A PLANTA EM OUTRAS CLASSES
-    public int getPlantaSelecionada() {
-        return plantaSelectTipo;
-    }
-    
     
 }

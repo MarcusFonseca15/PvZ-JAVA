@@ -2,6 +2,9 @@ package visual;
 
 import modelo.Campo;
 import javax.swing.*;
+
+import org.w3c.dom.events.MouseEvent;
+
 import java.awt.*;
 import visual.BarraSelect;
 
@@ -40,6 +43,11 @@ public class PvZGame extends JPanel {
         //PATH DO CORTADOR
         cortadorImg = new ImageIcon("src/visual/assets/Cortador/Cortador.png").getImage();
         girassolImg = new ImageIcon("src/visual/assets/Plantas/Girassol.png").getImage();
+
+        //ADICIONAR OUVINTE DE MOUSE
+        
+
+
     }
 
     @Override

@@ -10,8 +10,13 @@ public class Campo {
 	private int[][] grama = new int[5][10];
     private int[][] matPla = new int[5][10];  //Matriz de plantas
     private int[][] matZo = new int[5][10];   //Matriz de zumbis
+
+    int celulaSize;
     
-public Campo() {
+public Campo(int linhas, int colunas, int celulaSize) {
+    this.matPla = new int[linhas][colunas];
+    this.celulaSize = celulaSize;
+
         iniciarCortadores();
     }
 
@@ -20,6 +25,20 @@ private void iniciarCortadores() {
             matPla[i][0] = 1;
         }
     }//fim initCortadores
+
+    //Se canto clicado for grama vazia(0) retorna true, senao false
+    public boolean isGrama(int linha, int coluna){
+        return matPla[linha][coluna] == 0;
+    }
+
+    public void plantar(int tipo, int linha, int coluna) {
+        if (isGrama(linha, coluna)) {
+            matPla[linha][coluna] = tipo;
+            System.out.println("Planta " + tipo + " plantada em [" + linha + ", " + coluna + "]");
+        } else {
+            System.out.println("Não é possível plantar aqui [" + linha + ", " + coluna + "]");
+        }
+    }
 
 // //ADIÇÃO E REMOÇÃO DE ELEMENTOS NA MATRIZ ?????? inspirar na logica do kill zumbi
 // public void addPlanta(int linha, int coluna) {

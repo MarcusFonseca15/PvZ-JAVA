@@ -19,7 +19,7 @@ public class FramePvZ extends JFrame{
     Image gramaNormal, gramaMouseOver;
     
     //TAMANHO DAS CÉLULAS
-    int celulaSize = 120;
+    int celulaSize = 120; //altera embaixo tbm
     int alturaSementeira = 30;
     int larguraArea = grama.length * celulaSize +15;//colunas 
     int alturaArea = grama[0].length * celulaSize + 35; //linhas
@@ -37,8 +37,13 @@ public class FramePvZ extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+
         this.campo = campo;
-        setLayout(new BorderLayout()); //dividir em norte e centro
+        this.mouseControlador = new MouseControlador(campo);
+        this.barraSelect = new BarraSelect(celulaSize, mouseControlador);
+
+
+        setLayout(new BorderLayout()); //criar o layout pra dividir a tela
         
         
         //IMAGENS
@@ -47,7 +52,7 @@ public class FramePvZ extends JFrame{
         
         //BARRA DE SELEÇÃO
         //MouseControlador mouseControlador = new MouseControlador(jogoPanel); //porque o BarraSelect pede
-        barraSelect = new BarraSelect(celulaSize /*, mouseControlador*/);
+        barraSelect = new BarraSelect(celulaSize, mouseControlador);
         add(barraSelect, BorderLayout.NORTH);
         
         
@@ -123,7 +128,10 @@ public class FramePvZ extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Campo campo = new Campo();
+            int linhas = 5;
+            int colunas = 9;
+            int celulaSize = 120; //altera em cima tbm
+            Campo campo = new Campo(linhas, colunas, celulaSize);
             new FramePvZ(campo).setVisible(true);
         });
     }

@@ -1,11 +1,12 @@
 NO BARRASELECT:
--Alterar PlantaSelecionada (HashSet) para int
+✅-Alterar PlantaSelecionada (HashSet) para int
+- Fazer um MouseOver (igual do FramePVZ)
 
-NECESSARIO CRIAR METODOS:
-1. IsGrama para confirmar se tal area clicada é grama, e passar o indice (ele diz x e y, mas substituimos) da matriz grama
+NECESSARIO CRIAR METODOS em CAMPO:
+✅1. IsGrama para confirmar se tal area clicada é grama, e passar o indice (ele diz x e y, mas substituimos) da matriz grama
+✅2. plantar( ), para adicionar o tipo do carrying na matriz
 
-2. plantar( ), para adicionar o tipo do carrying na matriz
-
+-ADD MouseListener em PvZGame, capturar o Click na imagem referente a matriz grama -> converter x/y para linhaxcoluna -> passar o mesmo indice para Matpla
 
 ADICIONAR COOLDOWN NO OBJETO 'PLANTA'
 
@@ -39,6 +40,3 @@ EM PVZFrame
 
 [Sobre o intersects() ]: Recebe uma variavel do tipo Retangle. Necessário fazer
                         Planta e Zumbi extends de Retangle ou uma Label, e preencher com suas imagens
-
-EM BARRA SELECT
-- Fazer um MouseOver (igual do FramePVZ)

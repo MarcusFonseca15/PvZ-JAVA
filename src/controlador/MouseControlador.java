@@ -6,12 +6,14 @@ import visual.PvZGame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JPanel;
+
 public class MouseControlador extends MouseAdapter{
 	//Click, Carrying
 	
 	private PvZGame jogoPanel;
-	private int plantaSelecionada = -1;
-	private boolean carrying = false;
+	private int carrying = -1;
+
 	private Campo campo;
 
 	
@@ -21,38 +23,20 @@ public class MouseControlador extends MouseAdapter{
 	}
 
 	public void selecionarPlanta(int tipo) {
-		if (carrying && plantaSelecionada == tipo) {
-			//Clicou na mesma planta da BarraSelect -> Deseleciona
-			plantaSelecionada = -1;
-			carrying = false;
-		} else {
-			plantaSelecionada = tipo;
-			carrying = true;
-		}
+		carrying = tipo;
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		/*if (carrying) {
+		if (carrying != -1) {
+			//PLANTAR NA GRAMA
 			if (campo.isGrama (e.getX(), e.getY())){
-				campo.plantar(plantaSelecionada, e.getX(), e.getY());
-				plantaSelecionada = -1;
-				carrying = false;
+				campo.plantar(carrying, e.getX(), e.getY());
+				carrying = -1; //Depois deseleciona
 			} else {
-				plantaSelecionada = -1;
-				carrying = false;
+				carrying = -1; //clicou fora, deseleciona
 			}
-			//Clica na grama, planta ela e carrying false
-			//Clicou em outra parte, deseleciona
-		}*/
-	}
-
-	public int getPlantaSelecionada(){
-		return plantaSelecionada;
-	}
-
-	public boolean isCarrying(){
-		return carrying;
+		}
 	}
 
 }
