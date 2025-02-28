@@ -32,9 +32,9 @@ private void iniciarCortadores() {
     }
 
     public void plantar(int tipo, int linha, int coluna) {
+    
         if (isGrama(linha, coluna)) {
             matPla[linha][coluna] = tipo;
-            System.out.println("Planta " + tipo + " plantada em [" + linha + ", " + coluna + "]");
         } else {
             System.out.println("Não é possível plantar aqui [" + linha + ", " + coluna + "]");
         }

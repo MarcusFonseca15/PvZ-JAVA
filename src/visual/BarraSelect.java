@@ -18,7 +18,7 @@ public class BarraSelect extends JPanel {
 
     private List<Integer> listaPlantas = new ArrayList<>(); //lista ordenada de plantas
     private JPanel slotPlanta = null;
-    private int plantaSelectTipo = -1; 
+    public int plantaSelectTipo = -1; 
 
     private MouseControlador mouseControlador;
 
@@ -98,6 +98,7 @@ public class BarraSelect extends JPanel {
         case 4: nomePlanta = "Carnívora"; pathImage = "/visual/assets/Plantas/Carnivora.png"; break;
         case 5: nomePlanta = "Noz"; pathImage = "/visual/assets/Plantas/Noz.png"; break;
         case 6: nomePlanta = "Gelo"; pathImage = "/visual/assets/Plantas/Gelo.png"; break;
+        case 7: nomePlanta = "Batata"; pathImage = "/visual/assets/Plantas/Batata.png"; break;
         default: nomePlanta = "Desconhecida";
         }
         
@@ -140,4 +141,7 @@ public class BarraSelect extends JPanel {
         }
     }
     
+    public int getPlantaSelectTipo(){
+        return plantaSelectTipo;
+    }
 }

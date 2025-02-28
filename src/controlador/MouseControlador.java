@@ -17,7 +17,7 @@ public class MouseControlador extends MouseAdapter{
 	private Campo campo;
 
 	
-	public MouseControlador(Campo campo){
+	public MouseControlador(Campo campo, PvZGame jogoPanel){
 		this.campo = campo;
 		this.jogoPanel = jogoPanel;
 	}
@@ -39,4 +39,8 @@ public class MouseControlador extends MouseAdapter{
 		}
 	}
 
+
+	public void setJogoPanel(PvZGame jogoPanel) {
+		this.jogoPanel = jogoPanel;
+	}
 }

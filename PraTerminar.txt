@@ -6,10 +6,10 @@ NECESSARIO CRIAR METODOS em CAMPO:
 ✅1. IsGrama para confirmar se tal area clicada é grama, e passar o indice (ele diz x e y, mas substituimos) da matriz grama
 ✅2. plantar( ), para adicionar o tipo do carrying na matriz
 
--ADD MouseListener em PvZGame, capturar o Click na imagem referente a matriz grama -> converter x/y para linhaxcoluna -> passar o mesmo indice para Matpla
+✅-ADD MouseListener em PvZGame, capturar o Click na imagem referente a matriz grama -> converter x/y para linhaxcoluna -> passar o mesmo indice para Matpla
+
 
 ADICIONAR COOLDOWN NO OBJETO 'PLANTA'
-
 
 DENTRO DE CADA PLANTA:
 -Criar a imagem

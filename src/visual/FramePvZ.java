@@ -25,9 +25,9 @@ public class FramePvZ extends JFrame{
     int alturaArea = grama[0].length * celulaSize + 35; //linhas
     
     private Campo campo;
+    private BarraSelect barraSelect;
     private JPanel gramaPanel;
     private PvZGame jogoPanel;
-    private BarraSelect barraSelect;
     private MouseControlador mouseControlador;
     
 
@@ -39,9 +39,22 @@ public class FramePvZ extends JFrame{
         setResizable(false);
 
         this.campo = campo;
-        this.mouseControlador = new MouseControlador(campo);
+        
+        this.mouseControlador = new MouseControlador(campo, null);
         this.barraSelect = new BarraSelect(celulaSize, mouseControlador);
+        this.jogoPanel = new PvZGame(campo, celulaSize, barraSelect);
 
+        /* 
+        // Inicializa MouseControlador sem passar jogoPanel ainda
+        this.mouseControlador = new MouseControlador(campo);
+
+        // Cria barraSelect antes de jogoPanel
+        this.barraSelect = new BarraSelect(120, mouseControlador);
+
+        // Agora cria PvZGame e passa barraSelect corretamente
+        this.jogoPanel = new PvZGame(campo, barraSelect, mouseControlador);
+        this.mouseControlador.setJogoPanel(jogoPanel); // Atualiza referência
+*/
 
         setLayout(new BorderLayout()); //criar o layout pra dividir a tela
         
@@ -95,7 +108,7 @@ public class FramePvZ extends JFrame{
         });
         
         //PANEL DO JOGO (CAMADA SUPERIOR)
-        jogoPanel = new PvZGame(campo, celulaSize);
+        jogoPanel = new PvZGame(campo, celulaSize, barraSelect);
         jogoPanel.setOpaque(false); //!IMPORTANTE! Camada fica visivel abaixo
 
         
