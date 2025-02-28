@@ -8,6 +8,7 @@ NECESSARIO CRIAR METODOS em CAMPO:
 
 ✅-ADD MouseListener em PvZGame, capturar o Click na imagem referente a matriz grama -> converter x/y para linhaxcoluna -> passar o mesmo indice para Matpla
 
+-AO PLANTAR/DESPLANTAR, CARRYING DEVE SER -1, E TIPO = NULL; SLOT DEVE SER DESCELECIONADO. [EVITAR PLANTAR MULTIPLAS]
 
 ADICIONAR COOLDOWN NO OBJETO 'PLANTA'
 
