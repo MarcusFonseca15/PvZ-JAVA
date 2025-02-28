@@ -21,6 +21,11 @@ public class PvZGame extends JPanel {
     //IMAGENS
     private Image cortadorImg; //1
     private Image girassolImg; //2
+    private Image ervilhaImg; //3
+    private Image batataImg;  //4
+    private Image nozImg;     //5
+    private Image carnivoraImg; //6
+    private Image geloImg;      //7
     
     /*
     0: Vazio;
@@ -47,6 +52,11 @@ public class PvZGame extends JPanel {
         //PATH DO CORTADOR
         cortadorImg = new ImageIcon("src/visual/assets/Cortador/Cortador.png").getImage();
         girassolImg = new ImageIcon("src/visual/assets/Plantas/Girassol.png").getImage();
+        ervilhaImg = new ImageIcon("src/visual/assets/Plantas/Ervilha.png").getImage();
+        batataImg = new ImageIcon("src/visual/assets/Plantas/batata.png").getImage();
+        nozImg = new ImageIcon("src/visual/assets/Plantas/Noz.png").getImage();
+        carnivoraImg = new ImageIcon("src/visual/assets/Plantas/Carnivora.png").getImage();
+        geloImg = new ImageIcon("src/visual/assets/Plantas/Gelo.png").getImage();
 
         
         //ADICIONAR OUVINTE DE MOUSE
@@ -72,7 +82,11 @@ public class PvZGame extends JPanel {
                 }
             }
         });
+
+        
     }
+
+    
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -83,8 +97,6 @@ public class PvZGame extends JPanel {
 
     private void desenharCampo(Graphics g) {
         int[][] matPla = campo.getMatPla();  //Atualizar
-
-        double prop = 0.7; //proporção das plantas
         
         for (int i = 0; i < matPla.length; i++) {
             for (int j = 0; j < matPla[i].length; j++) {
@@ -97,14 +109,25 @@ public class PvZGame extends JPanel {
                 	g.drawImage(girassolImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
                 }
                 //ERVILHA
-
+                if (matPla[i][j] == 3) {
+                	g.drawImage(ervilhaImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
+                }
                 //BATATA
-
+                if (matPla[i][j] == 4) {
+                	g.drawImage(batataImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
+                }
                 //NÓZ
-
+                if (matPla[i][j] == 5) {
+                	g.drawImage(nozImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
+                }
                 //PLANTA CARNIVORA
-
+                if (matPla[i][j] == 6) {
+                	g.drawImage(carnivoraImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
+                }
                 //GELO
+                if (matPla[i][j] == 7) {
+                	g.drawImage(geloImg, j* celulaSize, i * celulaSize, celulaSize, celulaSize, null);
+                }
                 
             }
         }

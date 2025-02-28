@@ -95,10 +95,10 @@ public class BarraSelect extends JPanel {
         switch (tipo) {
         case 2: nomePlanta = "Girassol"; pathImage = "/visual/assets/Plantas/Girassol.png"; break;
         case 3: nomePlanta = "Ervilha"; pathImage = "/visual/assets/Plantas/Ervilha.png"; break;
-        case 4: nomePlanta = "Carnívora"; pathImage = "/visual/assets/Plantas/Carnivora.png"; break;
+        case 4: nomePlanta = "Batata"; pathImage = "/visual/assets/Plantas/Batata.png"; break;
         case 5: nomePlanta = "Noz"; pathImage = "/visual/assets/Plantas/Noz.png"; break;
-        case 6: nomePlanta = "Gelo"; pathImage = "/visual/assets/Plantas/Gelo.png"; break;
-        case 7: nomePlanta = "Batata"; pathImage = "/visual/assets/Plantas/Batata.png"; break;
+        case 6: nomePlanta = "Carnivora"; pathImage = "/visual/assets/Plantas/Carnivora.png"; break;
+        case 7: nomePlanta = "Gelo"; pathImage = "/visual/assets/Plantas/Gelo.png"; break;
         default: nomePlanta = "Desconhecida";
         }
         

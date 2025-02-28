@@ -12,8 +12,6 @@ import controlador.MouseControlador;
 
 
 public class FramePvZ extends JFrame{
-	
-
 	//GRAMA
     int[][] grama = new int[10][5];
     Image gramaNormal, gramaMouseOver;
@@ -43,18 +41,6 @@ public class FramePvZ extends JFrame{
         this.mouseControlador = new MouseControlador(campo, null);
         this.barraSelect = new BarraSelect(celulaSize, mouseControlador);
         this.jogoPanel = new PvZGame(campo, celulaSize, barraSelect);
-
-        /* 
-        // Inicializa MouseControlador sem passar jogoPanel ainda
-        this.mouseControlador = new MouseControlador(campo);
-
-        // Cria barraSelect antes de jogoPanel
-        this.barraSelect = new BarraSelect(120, mouseControlador);
-
-        // Agora cria PvZGame e passa barraSelect corretamente
-        this.jogoPanel = new PvZGame(campo, barraSelect, mouseControlador);
-        this.mouseControlador.setJogoPanel(jogoPanel); // Atualiza referência
-*/
 
         setLayout(new BorderLayout()); //criar o layout pra dividir a tela
         
@@ -89,9 +75,10 @@ public class FramePvZ extends JFrame{
          * Grama Normal = 0
          * Grama MouseOver = 1
          * */
+        
         gramaPanel.setPreferredSize(new Dimension(grama[0].length * celulaSize, grama.length * celulaSize));
         gramaPanel.addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
+           @Override
             public void mouseMoved(MouseEvent e) {
                 int x = e.getX() / celulaSize;
                 int y = e.getY() / celulaSize;
@@ -107,10 +94,12 @@ public class FramePvZ extends JFrame{
             }
         });
         
+        
         //PANEL DO JOGO (CAMADA SUPERIOR)
         jogoPanel = new PvZGame(campo, celulaSize, barraSelect);
         jogoPanel.setOpaque(false); //!IMPORTANTE! Camada fica visivel abaixo
 
+        
         
         //JLayeredPane ORGANIZAR AS CAMADAS
         JLayeredPane layeredPane = new JLayeredPane();
@@ -127,6 +116,33 @@ public class FramePvZ extends JFrame{
 
         add(layeredPane);
         pack();
+
+        
+        jogoPanel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            //GAMBIARRA PROS EVENTOS DE MOUSEOVER PASSAR PRA gramaPanel (o jogoPanel estava absorvendo primeiro)
+            public void mouseMoved(MouseEvent e) {
+                System.out.println("Mouse detectado no jogoPanel, repassando para gramaPanel...");
+                
+                int x = e.getX();
+                int y = e.getY();
+        
+                MouseEvent novoEvento = new MouseEvent(
+                    gramaPanel, //Componente destino
+                    MouseEvent.MOUSE_MOVED,
+                    e.getWhen(),
+                    e.getModifiersEx(),
+                    x, y,
+                    e.getClickCount(),
+                    e.isPopupTrigger()
+                );
+        
+                for (MouseMotionListener listener : gramaPanel.getMouseMotionListeners()) {
+                    listener.mouseMoved(novoEvento);
+                }
+            }
+        });
+        
     }
     
     //COLOCAR A TEXTURA DA GRAMA
