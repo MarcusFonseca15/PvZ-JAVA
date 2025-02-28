@@ -32,31 +32,20 @@ private void iniciarCortadores() {
     }
 
     public void plantar(int tipo, int linha, int coluna) {
-    
-        if (isGrama(linha, coluna)) {
+        //LÓGICA DA PÁ
+        if (tipo == 0){
+            //Se tiver planta (!= de grama) remove
+            if (!isGrama(linha, coluna)){
+                matPla[linha][coluna] = 0;
+            }
+        }
+        //PLANTAR NOVO
+        else if (isGrama(linha, coluna)) {
             matPla[linha][coluna] = tipo;
         } else {
-            System.out.println("Não é possível plantar aqui [" + linha + ", " + coluna + "]");
+            System.out.println("Não pode plantar aqui [" + linha + ", " + coluna + "]");
         }
     }
-
-// //ADIÇÃO E REMOÇÃO DE ELEMENTOS NA MATRIZ ?????? inspirar na logica do kill zumbi
-// public void addPlanta(int linha, int coluna) {
-//     matPla[linha][coluna] = 1;
-// }
-
-// public void removePlanta(int linha, int coluna) {
-//     matPla[linha][coluna] = 0;
-// }
-
-// public void addZumbi(int linha, int coluna) {
-//     matZo[linha][coluna] = 1;
-// }
-
-// public void killZumbi(int linha, int coluna) {
-//     matZo[linha][coluna] = 0;
-// }
-
 
 //MÉTODOS VALIDAÇÕES DE ESTADO
 public boolean temPlanta(int linha, int coluna) {
@@ -66,7 +55,6 @@ public boolean temPlanta(int linha, int coluna) {
 public boolean temZumbi(int linha, int coluna) {
     return matZo[linha][coluna] == 1;
 }
-
 
 // MÉTODOS GETTERS
 

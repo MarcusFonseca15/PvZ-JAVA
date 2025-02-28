@@ -117,12 +117,12 @@ public class FramePvZ extends JFrame{
         add(layeredPane);
         pack();
 
-        
+
         jogoPanel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             //GAMBIARRA PROS EVENTOS DE MOUSEOVER PASSAR PRA gramaPanel (o jogoPanel estava absorvendo primeiro)
             public void mouseMoved(MouseEvent e) {
-                System.out.println("Mouse detectado no jogoPanel, repassando para gramaPanel...");
+               // System.out.println("DETECTANDO MOVIMENTO");
                 
                 int x = e.getX();
                 int y = e.getY();

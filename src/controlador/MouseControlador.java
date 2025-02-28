@@ -33,6 +33,7 @@ public class MouseControlador extends MouseAdapter{
 			if (campo.isGrama (e.getX(), e.getY())){
 				campo.plantar(carrying, e.getX(), e.getY());
 				carrying = -1; //Depois deseleciona
+				selecionarPlanta(-1);
 			} else {
 				carrying = -1; //clicou fora, deseleciona
 			}

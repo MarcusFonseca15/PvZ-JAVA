@@ -68,6 +68,8 @@ public class BarraSelect extends JPanel {
         gbc.gridx = 2; gbc.weightx = 0.2;
         add(areaPa, gbc);
 
+        addPaBarra();
+
     } //------------------------------FIM DO BARRA SELECT
 
     //ADD PLANTAS NA SEMENTEIRA (COM SEUS IDS)
@@ -141,6 +143,39 @@ public class BarraSelect extends JPanel {
         }
     }
     
+    private void addPaBarra(){
+        
+        //CRIAR O PANEL
+        JPanel slot = new JPanel();
+        slot.setBackground(Color.GRAY);
+        slot.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        slot.setLayout(new BorderLayout());
+
+        //PATH DA IMG
+        String pathImage = "/visual/assets/grama/Shovel.png";
+        int tamShovel = celulaSize / 2;
+
+        //MUDAR IMG
+        ImageIcon imgPaOriginal = new ImageIcon(getClass().getResource(pathImage));
+        Image imgPaSlot = imgPaOriginal.getImage().getScaledInstance(tamShovel, tamShovel, Image.SCALE_SMOOTH);
+        JLabel imgLabel = new JLabel(new ImageIcon(imgPaSlot));
+        imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        slot.add(imgLabel, BorderLayout.CENTER);
+
+         //EVENTO DE CLICK
+        slot.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            selecionarPlanta(0, slot);
+             }
+         });
+        
+        //ADD NA AREA DA PÁ
+        areaPa.add(slot);
+        revalidate();
+        repaint();
+        }
+
     public int getPlantaSelectTipo(){
         return plantaSelectTipo;
     }
