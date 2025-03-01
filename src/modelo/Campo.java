@@ -35,7 +35,7 @@ private void iniciarCortadores() {
         //LÓGICA DA PÁ
         if (tipo == 0){
             if (matPla[linha][coluna] == 1){
-                System.out.println("Não pode remover cortador [" + linha + ", " + coluna + "]");
+                return;
             }
             //Se tiver planta (!= de grama) remove
             else if (!isGrama(linha, coluna)){
