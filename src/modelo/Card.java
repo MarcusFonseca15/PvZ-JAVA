@@ -36,4 +36,14 @@ public class Card {
         }
     }
 
+    /*
+    public Planta gerarPlanta() {
+        switch (tipoPlanta) {
+            case 1: return new Ervilha();
+            case 2: return new Girassol();
+            default: return null;
+        }
+    }
+     */
+
 }

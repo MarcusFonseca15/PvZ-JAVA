@@ -1,5 +1,6 @@
 package modelo;
-import modelo.Planta;;
+import modelo.Planta;
+import modelo.Projetil;
 
 public class Ervilha extends Planta{
     public Ervilha() {
@@ -10,4 +11,6 @@ public class Ervilha extends Planta{
     public void agir() {
             //Zumbi na mesma linha atira
     }
+
+    //Importar o projetil e fazer suas instancias nele. NAO POSSUI NENHUM EFEITO ESPECIAL
 }

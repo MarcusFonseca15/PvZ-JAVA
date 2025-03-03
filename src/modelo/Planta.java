@@ -16,4 +16,7 @@ public abstract class Planta {
     }//do public Planta
 	
 	public abstract void agir(); //metodo geral pra cada planta fazer o seu
+
+    //public boolean isViva(){return durabilidade > 0}
+    //if (!isViva){campo.matPla[linha][coluna]=0}
 }
