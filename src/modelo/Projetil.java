@@ -10,4 +10,7 @@ public class Projetil {
     }
 
     //public void efeitoEspecial(Zumbi zumbi);
+
+    //SERÁ O OBJETO ESTÁTICO. O QUE IRÁ MOVE-LO SERÁ A CLASSE DE ANIMAÇÕES NO CONTROLADOR
+    //Ela irá ter movimento vertical, horizontal, elipses, etc
 }
