@@ -26,6 +26,16 @@ DENTRO DE CADA PLANTA:
 Minha dúvida é se esse é o melhor jeito. Por enquanto, tem-se somente 6 plantas, mas posteriormente pretendo adicionar mais (e são mais de 60 plantas, algumas muito parecidas, que muda só nome, textura, range, força). Imagino se criar 60 classes ficaria muito pesado ou bagunçado, ou se tem outras formas fazer.
 Por fim, os projéteis de cada uma tem uma textura(imagem) diferente e pode ter danos diferentes (exemplo: a planta de gelo atira ervilhas congelantes. Não é a planta que congela, mas sim o seu projétil, que com a lógica de colisão com o zumbi, irá toca-lo e congela-lo). Esses projeteis pretendo adicionar junto a classe de cada planta, ja que cada uma tem o seu, e ele será chamado na hora de fazer seus respectivos métodos.
 
+
+SOBRE CLASSES SEMELHANTES:
+Algumas plantas são parecidas diferenciam só pela textura, dano, cooldown. 
+- Criar um sistema de Config de Planta, onde variações seraõ carregas por um JSON ou mapa de atributos.
+Ex: ervilha e ervilha gelo (mesma mecanica, muda projétil e cooldown) ou girassois duplos
+
+
+-CRIAR CLASSE 'PROJÉTIL' e CADA PLANTA INSTANCIE e SOBRESCREVA O SEU PROPRIO:
+Ex: construtor: int dano, boolean congelar, imgPath
+
 EM PVZGame
 - Interação entre elementos
 - Inicializa o Slot de acordo com o que foi selecionado
