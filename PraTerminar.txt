@@ -10,15 +10,21 @@ NECESSARIO CRIAR METODOS em CAMPO:
 
 -AO PLANTAR/DESPLANTAR, CARRYING DEVE SER -1, E TIPO = NULL; SLOT DEVE SER DESCELECIONADO. [EVITAR PLANTAR MULTIPLAS]
 
-ADICIONAR COOLDOWN NO OBJETO 'PLANTA'
 
+Tem uma diferença entre a planta do campo e a planta no slot (Chamaremos de card).
+A Planta no campo possui os atributos string Nome, int Durabilidade (Tempo de resitencia a ataque até morrer), int Tipo, int CoolDown (Tempo que leva para executar sua ação, seja atirar, comer, gerar sol), int Range (alcance ou percepção de zumbis proximos para atacar) e talvez int Preço (quanto custa). Digo talvez porque esse não é um atributo utilizado dentro do campo, mas só da compra do card.
+Quero aplicar POO nesse projeto, mas tenho que organizar a logica das coisas.
+Planta é o conceito geral, e eu pretendo criar uma classe pra cada planta, já que cada uma irá ter sua própria lógica individual. Será que Planta seria um abstract, e cada planta (girassol, ervilha, noz, etc) deve herdar dela? E eu crio um outro objeto(classe) chamada Card, e seus proprios atributos?
+Os cards são "cartas" que o jogador compra com os sóis coletados. Cada um tem um preço, e também um tempo variado de cooldown para regarregar (após comprar, nao da pra comprar outro imediatamente, tem que esperar um tempo). Não sei se eu deveria criar um abstract ou classe só pra isso, e pra cada tipo de planta, por que pelo que vou explicar a seguir, as coisas podem se complexar mais pra frente.
+Para as plantas individuais, eu pretendo:
 DENTRO DE CADA PLANTA:
--Criar a imagem
--Criar a lógica:
+-Criar a imagem dela (ao inves de adicionar diretamente em PvZGame o path e dimensoes de cada imagem, cada classe teria sua propria imagem e PvZGame iria carrega-las e adicionar (de acordo com o respectivo tipo que estiver na celula da matriz) )
+-Criar a lógica (cada planta possui uma lógica, então faz sentido elas estarem separadas):
     1.Ervilha: if Zumbi na mesma linha, atira
     2. Girassol: A cada random 5-10 segs gerar um sol
-    3. Carnívora: if Zumbi matZa(Da planta)+1 -> EAT (cooldown ativa)
--Identificar se houve click nela (e se sim, se foi com a pá, pra ela se deletar)
+    3. Carnívora: if Zumbi matZa(Da planta)+1 -> EAT (cooldown ativa) etc etc etc
+Minha dúvida é se esse é o melhor jeito. Por enquanto, tem-se somente 6 plantas, mas posteriormente pretendo adicionar mais (e são mais de 60 plantas, algumas muito parecidas, que muda só nome, textura, range, força). Imagino se criar 60 classes ficaria muito pesado ou bagunçado, ou se tem outras formas fazer.
+Por fim, os projéteis de cada uma tem uma textura(imagem) diferente e pode ter danos diferentes (exemplo: a planta de gelo atira ervilhas congelantes. Não é a planta que congela, mas sim o seu projétil, que com a lógica de colisão com o zumbi, irá toca-lo e congela-lo). Esses projeteis pretendo adicionar junto a classe de cada planta, ja que cada uma tem o seu, e ele será chamado na hora de fazer seus respectivos métodos.
 
 EM PVZGame
 - Interação entre elementos
