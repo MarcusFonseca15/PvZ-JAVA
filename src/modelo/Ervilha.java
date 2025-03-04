@@ -14,6 +14,7 @@ public class Ervilha extends Planta{
              * if (zumbiNaLinha()){
              * Projetil ervilha = new Projetil (dano, imagepath, efeitoespecial)}
              */
+            
     }
 
     //Importar o projetil e fazer suas instancias nele. NAO POSSUI NENHUM EFEITO ESPECIAL
