@@ -10,6 +10,7 @@ NECESSARIO CRIAR METODOS em CAMPO:
 
 -AO PLANTAR/DESPLANTAR, CARRYING DEVE SER -1, E TIPO = NULL; SLOT DEVE SER DESCELECIONADO. [EVITAR PLANTAR MULTIPLAS]
 
+-CRIAR JSON PARA "BANCO DE DADOS" DAS PLANTAS (e projéteis): Nome, textura, durabil, cooldown[...], projétil-imgpath, tipoAnimação, tipoAnimaPorjetil, danoProjetil, danoEspecial
 
 Tem uma diferença entre a planta do campo e a planta no slot (Chamaremos de card).
 A Planta no campo possui os atributos string Nome, int Durabilidade (Tempo de resitencia a ataque até morrer), int Tipo, int CoolDown (Tempo que leva para executar sua ação, seja atirar, comer, gerar sol), int Range (alcance ou percepção de zumbis proximos para atacar) e talvez int Preço (quanto custa). Digo talvez porque esse não é um atributo utilizado dentro do campo, mas só da compra do card.
