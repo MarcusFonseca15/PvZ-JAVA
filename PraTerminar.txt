@@ -9,6 +9,7 @@ NECESSARIO CRIAR METODOS em CAMPO:
 ✅-ADD MouseListener em PvZGame, capturar o Click na imagem referente a matriz grama -> converter x/y para linhaxcoluna -> passar o mesmo indice para Matpla
 
 -AO PLANTAR/DESPLANTAR, CARRYING DEVE SER -1, E TIPO = NULL; SLOT DEVE SER DESCELECIONADO. [EVITAR PLANTAR MULTIPLAS]
+-ULTIMA COLUNA NÃO ESTÁ PLANTÁVEL (Possivel erro nas proporções na matriz passado visualmente)
 
 -CRIAR JSON PARA "BANCO DE DADOS" DAS PLANTAS (e projéteis): Nome, textura, durabil, cooldown[...], projétil-imgpath, tipoAnimação, tipoAnimaPorjetil, danoProjetil, danoEspecial
 
