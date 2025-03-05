@@ -17,7 +17,7 @@ public class BarraSelect extends JPanel {
     private int celulaSize;
 
     private List<Integer> listaPlantas = new ArrayList<>(); //lista ordenada de plantas
-    private JPanel slotPlanta = null;
+    public JPanel slotPlanta = null;
     public int plantaSelectTipo = -1; 
 
     private MouseControlador mouseControlador;
@@ -164,6 +164,7 @@ public class BarraSelect extends JPanel {
 
          //EVENTO DE CLICK
         slot.addMouseListener(new MouseAdapter() {
+            //if (mouseControlador.carrying != -1){}
             @Override
             public void mouseClicked(MouseEvent e) {
             selecionarPlanta(0, slot);
